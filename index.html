@@ -1,36 +1,37 @@
 <!DOCTYPE html>
-<html lang = "ja">
+<html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>Calendar</title>
-  <link rel ="stylesheet" href="css/styles.css">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <table>
-    <thead>
-      <tr>
-        <th id="prev">&laquo;</th>
-        <th id="title" colspan="5">2020/05</th>
-        <th id="next">&raquo;</th>
-      </tr>
-      <tr>
-        <th>Sun</th>
-        <th>Mon</th>
-        <th>Tue</th>
-        <th>Wed</th>
-        <th>Thu</th>
-        <th>Fri</th>
-        <th>Sat</th>
-      </tr>
-    </thead>
-    <tbody>    
-    </tbody>
-    <tfoot>
-      <tr>
-        <td id="today" colspan="7">Today</td>
-      </tr>
-    </tfoot>
-  </table>
+  <main class="app">
+    <header class="app__header">
+      <h1 class="app__title">やることリスト</h1>
+      <p class="app__subtitle">今日のタスクをシンプルに管理しましょう</p>
+      <form id="todo-form" class="todo-form" autocomplete="off">
+        <label class="todo-form__label" for="todo-input">タスク</label>
+        <div class="todo-form__row">
+          <input id="todo-input" class="todo-form__input" type="text" name="task" placeholder="例: 買い物に行く" required>
+          <button type="submit" class="todo-form__button">追加</button>
+        </div>
+      </form>
+    </header>
+
+    <section class="panel">
+      <div class="panel__controls">
+        <span id="task-count" class="panel__count">0 件</span>
+        <div class="panel__filters" role="group" aria-label="フィルター">
+          <button type="button" class="filter is-active" data-filter="all">すべて</button>
+          <button type="button" class="filter" data-filter="active">未完了</button>
+          <button type="button" class="filter" data-filter="completed">完了</button>
+        </div>
+      </div>
+      <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+      <button id="clear-completed" class="panel__clear" type="button">完了済みを削除</button>
+    </section>
+  </main>
 
   <script src="js/main.js"></script>
 </body>
